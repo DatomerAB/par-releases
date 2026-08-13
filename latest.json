@@ -1,15 +1,15 @@
 {
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.2026081301",
   "notes": "Pär Desktop beta for macOS",
   "pub_date": "2026-08-13T00:00:00Z",
   "platforms": {
     "darwin-aarch64": {
       "signature": "TODO: add base64-encoded signature from .dmg.sig produced by Tauri release workflow",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2/P%C3%A4r_0.1.0-beta.2_aarch64.dmg"
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/P%C3%A4r_0.1.0-beta.2026081301_aarch64.dmg"
     },
     "darwin-x86_64": {
       "signature": "TODO: add base64-encoded signature from .dmg.sig produced by Tauri release workflow",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2/P%C3%A4r_0.1.0-beta.2_x64.dmg"
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/P%C3%A4r_0.1.0-beta.2026081301_x64.dmg"
     }
   }
 }
