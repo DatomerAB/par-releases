@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0-beta.1",
+  "notes": "Pär Desktop beta for macOS",
+  "pub_date": "2026-08-13T00:00:00Z",
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": "TODO: add base64-encoded signature from .dmg.sig produced by Tauri release workflow",
+      "url": "https://github.com/par-app/par-releases/releases/download/v0.1.0-beta.1/P%C3%A4r_0.1.0-beta.1_aarch64.dmg"
+    },
+    "darwin-x86_64": {
+      "signature": "TODO: add base64-encoded signature from .dmg.sig produced by Tauri release workflow",
+      "url": "https://github.com/par-app/par-releases/releases/download/v0.1.0-beta.1/P%C3%A4r_0.1.0-beta.1_x64.dmg"
+    }
+  }
+}
