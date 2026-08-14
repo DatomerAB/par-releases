@@ -1,15 +1,31 @@
 {
   "version": "0.1.0-beta.2026081301",
-  "notes": "Pär Desktop beta for macOS",
-  "pub_date": "2026-08-13T00:00:00Z",
+  "notes": "Pär Desktop beta: macOS Apple Silicon, Linux x86_64, Windows x86_64.",
+  "pub_date": "2026-08-13T22:26:51.811Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "TODO: add base64-encoded signature from .dmg.sig produced by Tauri release workflow",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/P%C3%A4r_0.1.0-beta.2026081301_aarch64.dmg"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXNOODNKTFdXVTNuVU9kMktIdWVIenlyVFZKeis3cW5lbFdmTTZENEFiYmE5Y0JWTGNwUXRva3NqMkkxVGg4UU4veGN0ZFFaRk4zZnVoajJvWDE1dkFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjU4MjMzCWZpbGU6UMOkci5hcHAudGFyLmd6CkhnQVRhNkpuNUQ1THpWOE9MN1FjczQ1ZmFnUUNLRk1RbC9qb21SSUgzcnJPYlFUV3BOS05HaUdLaGVGOUo5SjdJRGZ1WHZlVVlXeTJza0hNSFE3dkRBPT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/Par_aarch64.app.tar.gz"
     },
-    "darwin-x86_64": {
-      "signature": "TODO: add base64-encoded signature from .dmg.sig produced by Tauri release workflow",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/P%C3%A4r_0.1.0-beta.2026081301_x64.dmg"
+    "darwin-aarch64-app": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXNOODNKTFdXVTNuVU9kMktIdWVIenlyVFZKeis3cW5lbFdmTTZENEFiYmE5Y0JWTGNwUXRva3NqMkkxVGg4UU4veGN0ZFFaRk4zZnVoajJvWDE1dkFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjU4MjMzCWZpbGU6UMOkci5hcHAudGFyLmd6CkhnQVRhNkpuNUQ1THpWOE9MN1FjczQ1ZmFnUUNLRk1RbC9qb21SSUgzcnJPYlFUV3BOS05HaUdLaGVGOUo5SjdJRGZ1WHZlVVlXeTJza0hNSFE3dkRBPT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/Par_aarch64.app.tar.gz"
+    },
+    "linux-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXZqaVBhTnM5NlA0Vmd6M3h5VG90N21RQ0xaQzZtbTZEaHJqYldJWEJCTzVvbEZ6RXpyY0Jrb0djMkRKSGRsM1VwY2lpZWV0Sk5pWGNDZENnTitaU2c4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjU5MDg0CWZpbGU6UMOkcl8wLjEuMC1iZXRhLjIwMjYwODEzMDFfYW1kNjQuQXBwSW1hZ2UKVHdVMG5vcm9tZDZjdzhRTWFYT0JnRCt4WE5ZVC91NnZ6ZzdpeDZyanhoUXo1TFJrNWJFVmdBNVdobENCc0s1K2J0Y1hJRk5aSGlLME94OHZ4a0sxQWc9PQo=",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/Par_0.1.0-beta.2026081301_amd64.AppImage"
+    },
+    "linux-x86_64-appimage": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXZqaVBhTnM5NlA0Vmd6M3h5VG90N21RQ0xaQzZtbTZEaHJqYldJWEJCTzVvbEZ6RXpyY0Jrb0djMkRKSGRsM1VwY2lpZWV0Sk5pWGNDZENnTitaU2c4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjU5MDg0CWZpbGU6UMOkcl8wLjEuMC1iZXRhLjIwMjYwODEzMDFfYW1kNjQuQXBwSW1hZ2UKVHdVMG5vcm9tZDZjdzhRTWFYT0JnRCt4WE5ZVC91NnZ6ZzdpeDZyanhoUXo1TFJrNWJFVmdBNVdobENCc0s1K2J0Y1hJRk5aSGlLME94OHZ4a0sxQWc9PQo=",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/Par_0.1.0-beta.2026081301_amd64.AppImage"
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdW9MeVErTnZWSGphbXhZQ1hvaE1UcG4zeUpzWHYraXZVdmdNZC9Tc3BHMFVZWFBicXY2ZEx3dlBJVk1QRExiditUa1docG5TaWFJL0JrTkJqYXlob0FZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjYwMDAzCWZpbGU6UMOkcl8wLjEuMC1iZXRhLjIwMjYwODEzMDFfeDY0LXNldHVwLmV4ZQpjWjJoZk5GYXNPZXd4byt0UWhOcnZEVllLY3U0YjdCRWV3VHlFTTRUc01obzZHWW1EdkExbzVHY3pxd2R5S24rK0xXMkdvWWdMTFRDNHdNR25Kb0tCZz09Cg==",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/Par_0.1.0-beta.2026081301_x64-setup.exe"
+    },
+    "windows-x86_64-nsis": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdW9MeVErTnZWSGphbXhZQ1hvaE1UcG4zeUpzWHYraXZVdmdNZC9Tc3BHMFVZWFBicXY2ZEx3dlBJVk1QRExiditUa1docG5TaWFJL0JrTkJqYXlob0FZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg2NjYwMDAzCWZpbGU6UMOkcl8wLjEuMC1iZXRhLjIwMjYwODEzMDFfeDY0LXNldHVwLmV4ZQpjWjJoZk5GYXNPZXd4byt0UWhOcnZEVllLY3U0YjdCRWV3VHlFTTRUc01obzZHWW1EdkExbzVHY3pxd2R5S24rK0xXMkdvWWdMTFRDNHdNR25Kb0tCZz09Cg==",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/Par_0.1.0-beta.2026081301_x64-setup.exe"
     }
   }
 }
