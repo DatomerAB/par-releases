@@ -1,15 +1,15 @@
 {
-  "version": "0.1.0-beta.2026090101",
+  "version": "0.1.0-beta.2026090102",
   "notes": "",
-  "pub_date": "2026-09-01T12:54:35.013Z",
+  "pub_date": "2026-09-01T21:35:27.272Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXB0N1B1RWZSWGI1MWJlNXFtVVZHU1lXMVpjM1BqOHNLTm1wVGRGS3dTT3RSUkVKQW9GdzlUeld1bFNNZEROcWNhc2sySVBjU0lRY291eFdraHJoWHcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4MjY3MjUwCWZpbGU6UMOkci5hcHAudGFyLmd6CkliNWxpY29kdlBxeStKdVpZU1pDckZyZ0dOb3g4a1RndUl1RHFrdzFFNHhqZ2hkaFpuOVBQcVBFWXBma0ZVNU1pdFY3YUtycUtTUFNrR1REbXJKWER3PT0K",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026090101/Par_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdW5LVElrNm1yS0NlSzE4bmNpN2tmcHpuQ2VqZi9EbHhPcm5ya0NHaDNmRG5Fd1lXd3VRZzRvamJSOENYT1VneHlxK01seUI1NmU3TXBDcFlzQzBoV2drPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4Mjk4NDY5CWZpbGU6UMOkci5hcHAudGFyLmd6CjNhaE5tQng2dE0ycVQ4ODJUMVZ4NFZUMkl4czE2TjhlUUtVZXpGUFlSQ0ZUd0ZmQ1RENW9mRjd3Sm9ZRkN6MFN5Zk9JUDFBQUNWNEdsQXZ1SlNjNkNBPT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026090102/Par_aarch64.app.tar.gz"
     },
     "darwin-aarch64-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXB0N1B1RWZSWGI1MWJlNXFtVVZHU1lXMVpjM1BqOHNLTm1wVGRGS3dTT3RSUkVKQW9GdzlUeld1bFNNZEROcWNhc2sySVBjU0lRY291eFdraHJoWHcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4MjY3MjUwCWZpbGU6UMOkci5hcHAudGFyLmd6CkliNWxpY29kdlBxeStKdVpZU1pDckZyZ0dOb3g4a1RndUl1RHFrdzFFNHhqZ2hkaFpuOVBQcVBFWXBma0ZVNU1pdFY3YUtycUtTUFNrR1REbXJKWER3PT0K",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026090101/Par_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdW5LVElrNm1yS0NlSzE4bmNpN2tmcHpuQ2VqZi9EbHhPcm5ya0NHaDNmRG5Fd1lXd3VRZzRvamJSOENYT1VneHlxK01seUI1NmU3TXBDcFlzQzBoV2drPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4Mjk4NDY5CWZpbGU6UMOkci5hcHAudGFyLmd6CjNhaE5tQng2dE0ycVQ4ODJUMVZ4NFZUMkl4czE2TjhlUUtVZXpGUFlSQ0ZUd0ZmQ1RENW9mRjd3Sm9ZRkN6MFN5Zk9JUDFBQUNWNEdsQXZ1SlNjNkNBPT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026090102/Par_aarch64.app.tar.gz"
     }
   }
 }
