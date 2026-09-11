@@ -1,15 +1,15 @@
 {
-  "version": "0.1.5-beta.2026090807",
-  "notes": "This beta release improves the chat experience and hardens the release pipeline.\n\n## What's new\n\n- **Inline chat-history suggestions:** start typing in the chat input and P\u00e4r surfaces matching previous conversations by title. Paid tiers also see semantic matches. Navigate with arrow keys and press Enter to reopen a chat.\n- **Favourite chat backgrounds:** paid-tier users can choose from gradient presets or upload a custom background image. Selections are persisted locally and loaded through Tauri's scoped asset protocol.\n- **Version sync from git tag:** release builds now automatically align `package.json`, `package-lock.json`, `tauri.conf.json`, and `Cargo.toml` with the git tag, so the shipped app always reports the correct version.\n- **Pre-release readiness checks:** a new local checklist (`scripts/check_release_ready.sh`) verifies tooling, version sync, attribution, lint, tests, and desktop build health before a tag is pushed.\n\n## Download\n\nGet the notarized macOS DMG from the assets below.",
-  "pub_date": "2026-09-08T19:32:21.062Z",
+  "version": "0.1.8-beta.2026091002",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.8-beta.2026091002\n\n### Fixed\n\n- The bundled Python sidecar now starts reliably instead of leaving the app on\n  a blank window, and reports clean diagnostics when it cannot start.\n- \"Could not save model preference\" no longer appears when switching models\n  quickly. Rapid clicks are debounced so the selection is saved once.\n- Models whose catalog entries omit `model_uid` now get a stable identifier, so\n  preferences and routing stay attached to the right model between launches.\n\n### Security\n\n- Rotated the updater signing key and resolved npm audit findings in the\n  desktop dependency tree.\n\n### Changed\n\n- **This build must be installed manually from the DMG.** The updater signing\n  key changed, so existing installs cannot verify this update. Conversations,\n  models, license, and settings are preserved: they live in `~/.peer/`, outside\n  the app bundle.\n\n## Download\n- [Download P\u00e4r v0.1.8-beta.2026091002 for macOS](https://datomer.eu/#download)",
+  "pub_date": "2026-09-10T15:08:13.077Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXB6NmJKTlpmU0Q5T0RYWG54aFlrK3BKcTJZcmdGV0VpcXVISVJSVHZSRWhwZk1TNVc4VWZyQ1VEWm9WT0x0MnBlRHBONmRxRVRxREdWQmtRR2JpclEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODk1OTI3CWZpbGU6UMOkci5hcHAudGFyLmd6CkRSUVFvblUzVFc5YVFwYkduTE1INWExTUVmb2w2K1FhbTRWU01hdGRNbzlld2EwcWFkTHVraEloSWU4aGUycDVRQWlCMkdleUhpZ0l2emdiN2dET0FBPT0K",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.5-beta.2026090807/Par_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGNUMmY5SS9xYWZQUWVkNnJVdk91VDJMa0pFUGRud1ZQMXFsTWtPemVnekxlMkpNK21KRGJwUy9jUXp5cXJmQ1JpcVlBS3FzOURONEpnUkVtS1hOVGdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5MDUyODgxCWZpbGU6UMOkci5hcHAudGFyLmd6ClMyRnZHQnB6SDZleFRwZHJub1ZTOUZPcUlYQjFEYXA3aUpTbzJxWVhRV3huTE1TUFd4ZEtCRk1MQkFSQkxJL1pMWTJFYmx6cWdOVGZSQnhFKzJhaURBPT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.8-beta.2026091002/Par_aarch64.app.tar.gz"
     },
     "darwin-aarch64-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSdDBIVGhsVGdHdXB6NmJKTlpmU0Q5T0RYWG54aFlrK3BKcTJZcmdGV0VpcXVISVJSVHZSRWhwZk1TNVc4VWZyQ1VEWm9WT0x0MnBlRHBONmRxRVRxREdWQmtRR2JpclEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4ODk1OTI3CWZpbGU6UMOkci5hcHAudGFyLmd6CkRSUVFvblUzVFc5YVFwYkduTE1INWExTUVmb2w2K1FhbTRWU01hdGRNbzlld2EwcWFkTHVraEloSWU4aGUycDVRQWlCMkdleUhpZ0l2emdiN2dET0FBPT0K",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.5-beta.2026090807/Par_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGNUMmY5SS9xYWZQUWVkNnJVdk91VDJMa0pFUGRud1ZQMXFsTWtPemVnekxlMkpNK21KRGJwUy9jUXp5cXJmQ1JpcVlBS3FzOURONEpnUkVtS1hOVGdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5MDUyODgxCWZpbGU6UMOkci5hcHAudGFyLmd6ClMyRnZHQnB6SDZleFRwZHJub1ZTOUZPcUlYQjFEYXA3aUpTbzJxWVhRV3huTE1TUFd4ZEtCRk1MQkFSQkxJL1pMWTJFYmx6cWdOVGZSQnhFKzJhaURBPT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.8-beta.2026091002/Par_aarch64.app.tar.gz"
     }
   }
 }
