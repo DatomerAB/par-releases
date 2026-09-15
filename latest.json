@@ -1,15 +1,15 @@
 {
-  "version": "0.1.9-beta.2026091403",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026091403\n\n### Added\n\n- **Universal Mobile Companion Ergonomics**: Full-screen standalone PWA experience with dynamic viewport height (`100dvh`), iOS safe area inset handling, responsive slide-out navigation drawer, and automatic 16px minimum font size to eliminate iOS Safari input zoom.\n- **On-Screen QR Code Pairing**: Desktop Settings renders an instant pairing QR code so phones and tablets can scan and connect without typing IP addresses.\n- **Brand-Aware Device Detection**: Automatically recognizes client hardware (iPhone, iPad, Samsung Galaxy, Google Pixel, Huawei, Android) during pairing.\n\n### Fixed\n\n- **FastAPI Lifespan Migration**: Replaced deprecated `@app.on_event(\"startup\")` and `@app.on_event(\"shutdown\")` with modern `@asynccontextmanager` lifespan handlers.\n- **CI Self-Hosted Toolchain Resolution**: Automatically discovers and links Rust/Cargo toolchain paths on non-interactive self-hosted runners.\n\n## Download\n- [Download P\u00e4r v0.1.9-beta.2026091403 for macOS](https://datomer.eu/#download)",
-  "pub_date": "2026-09-14T19:11:51.769Z",
+  "version": "0.1.9-beta.2026091501",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026091501\n\n### Changed\n\n- **Home Hub Tab in Profile**: Relocated P\u00e4r Home Hub management from Settings to a dedicated tab inside Profile (`desktop/src/components/HomeHubSettings.tsx`), introducing a clean pill-tab navigation pattern (General, Personas, Security, Home Hub) with deep-linking support (`/profile?tab=homehub`).\n- **Streamlined Settings**: Removed Home Hub section and device/member pairing logic from Settings, focusing Settings strictly on system, server, vault, and data maintenance.\n\n## Download\n- [Download P\u00e4r v0.1.9-beta.2026091501 for macOS](https://datomer.eu/#download)",
+  "pub_date": "2026-09-15T07:19:42.613Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGV5ZTF3c09uRFZFaUhWbEZTZ0dFckNZYnUzWmxJN3Q3YS9reFdKYjFYSWZUcmdWd2hwdjUyUk13YUlvT0h5ZEplVzhmRkg2VXQ3Tm1xNUFnTS9lOXdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDEzMTAxCWZpbGU6UMOkci5hcHAudGFyLmd6CjR4S1hTUm5EdEJJMlpyVTlUZDlVV2x0SCtsZmRmc2FXNjU2ajJzbHY4S1RNMGVOY29DQStEQlRaSS9hTlJKSTJRUVFmTytSNHdETTAyT3phQ0hrMER3PT0K",
-      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/564040472"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFE4eWZLNTV0Vmo2eVNyd1lSSUdrS21tWG8veWZ4NHBJRTZIcy9XSGFTT1o1Rmg5WVZ3d0VnK09XYXJ1OVNDblFTY1hwYUlGTWhWWDNvMjBCZjExd3djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDU2NzcxCWZpbGU6UMOkci5hcHAudGFyLmd6CnEwcTlsK3BHdTROaS9sa2tNNjRQMnpFYVE4RjFjL3BsVWJaVjBYajZ6SUZwRmZTVzdPRU1kUGJwTE1QWVpLUU8wdURGRi9lTWZrWFo2c1FXN3lmQkRRPT0K",
+      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/565149778"
     },
     "darwin-aarch64-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGV5ZTF3c09uRFZFaUhWbEZTZ0dFckNZYnUzWmxJN3Q3YS9reFdKYjFYSWZUcmdWd2hwdjUyUk13YUlvT0h5ZEplVzhmRkg2VXQ3Tm1xNUFnTS9lOXdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDEzMTAxCWZpbGU6UMOkci5hcHAudGFyLmd6CjR4S1hTUm5EdEJJMlpyVTlUZDlVV2x0SCtsZmRmc2FXNjU2ajJzbHY4S1RNMGVOY29DQStEQlRaSS9hTlJKSTJRUVFmTytSNHdETTAyT3phQ0hrMER3PT0K",
-      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/564040472"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFE4eWZLNTV0Vmo2eVNyd1lSSUdrS21tWG8veWZ4NHBJRTZIcy9XSGFTT1o1Rmg5WVZ3d0VnK09XYXJ1OVNDblFTY1hwYUlGTWhWWDNvMjBCZjExd3djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDU2NzcxCWZpbGU6UMOkci5hcHAudGFyLmd6CnEwcTlsK3BHdTROaS9sa2tNNjRQMnpFYVE4RjFjL3BsVWJaVjBYajZ6SUZwRmZTVzdPRU1kUGJwTE1QWVpLUU8wdURGRi9lTWZrWFo2c1FXN3lmQkRRPT0K",
+      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/565149778"
     }
   }
 }
