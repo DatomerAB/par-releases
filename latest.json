@@ -1,15 +1,15 @@
 {
-  "version": "0.1.9-beta.2026091501",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026091501\n\n### Changed\n\n- **Home Hub Tab in Profile**: Relocated P\u00e4r Home Hub management from Settings to a dedicated tab inside Profile (`desktop/src/components/HomeHubSettings.tsx`), introducing a clean pill-tab navigation pattern (General, Personas, Security, Home Hub) with deep-linking support (`/profile?tab=homehub`).\n- **Streamlined Settings**: Removed Home Hub section and device/member pairing logic from Settings, focusing Settings strictly on system, server, vault, and data maintenance.\n\n## Download\n- [Download P\u00e4r v0.1.9-beta.2026091501 for macOS](https://datomer.eu/#download)",
-  "pub_date": "2026-09-15T07:19:42.613Z",
+  "version": "0.1.9-beta.2026091601",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026091601\n\n### Fixed\n\n- **Persistent Companion Auth & Cookie Fallback**: Added dual-layer token persistence via both `localStorage` and a persistent 1-year `par_hub_token` cookie with automatic header decoration across all HTTP and SSE streaming calls (`/api/chat/stream`, `/api/chat/file`, routines, and knowledge sync). This eliminates unexpected re-prompting for PINs after initial pairing on mobile Safari and Chrome.\n- **Companion App Lock Bypass**: Disabled host-level desktop inactivity auto-lock on companion mobile browsers, ensuring paired phones and tablets stay continuously connected without being blocked by host desktop PIN prompts.\n- **Companion Onboarding Auto-Bypass**: Ensured paired companion devices automatically bypass desktop first-launch wizards and jump directly into the conversation view.\n- **Brand Logo & Mobile Polish**: Replaced placeholder icons with the official rounded P\u00e4r brand logo on the welcome and pairing screens, and added responsive layout scrolling with pinned action buttons.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026091601 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
+  "pub_date": "2026-09-15T22:41:20.619Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFE4eWZLNTV0Vmo2eVNyd1lSSUdrS21tWG8veWZ4NHBJRTZIcy9XSGFTT1o1Rmg5WVZ3d0VnK09XYXJ1OVNDblFTY1hwYUlGTWhWWDNvMjBCZjExd3djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDU2NzcxCWZpbGU6UMOkci5hcHAudGFyLmd6CnEwcTlsK3BHdTROaS9sa2tNNjRQMnpFYVE4RjFjL3BsVWJaVjBYajZ6SUZwRmZTVzdPRU1kUGJwTE1QWVpLUU8wdURGRi9lTWZrWFo2c1FXN3lmQkRRPT0K",
-      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/565149778"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGRoQk9lcmsvSEpwbTFmU3FQZjZjWVV2bzRwK1FCNHR0SEZLckNlWkFYY1AxT1hQaytla3FqQWJlOFB2Njl6KytXRHNxNkZBa3VZRFdySk5ORFRTaHdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTEyMDcxCWZpbGU6UMOkci5hcHAudGFyLmd6CkVIZVRmVndibXAyTHBLK094RjlyVFVWbzEvLytId0xxcTArbzE4OFcrK2FKOERZU1VYUlQ1dVNaUTNNUm1takRueTlJMnIreHNVYXIvd0x5bE1LZURBPT0K",
+      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/566654496"
     },
     "darwin-aarch64-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFE4eWZLNTV0Vmo2eVNyd1lSSUdrS21tWG8veWZ4NHBJRTZIcy9XSGFTT1o1Rmg5WVZ3d0VnK09XYXJ1OVNDblFTY1hwYUlGTWhWWDNvMjBCZjExd3djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDU2NzcxCWZpbGU6UMOkci5hcHAudGFyLmd6CnEwcTlsK3BHdTROaS9sa2tNNjRQMnpFYVE4RjFjL3BsVWJaVjBYajZ6SUZwRmZTVzdPRU1kUGJwTE1QWVpLUU8wdURGRi9lTWZrWFo2c1FXN3lmQkRRPT0K",
-      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/565149778"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGRoQk9lcmsvSEpwbTFmU3FQZjZjWVV2bzRwK1FCNHR0SEZLckNlWkFYY1AxT1hQaytla3FqQWJlOFB2Njl6KytXRHNxNkZBa3VZRFdySk5ORFRTaHdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTEyMDcxCWZpbGU6UMOkci5hcHAudGFyLmd6CkVIZVRmVndibXAyTHBLK094RjlyVFVWbzEvLytId0xxcTArbzE4OFcrK2FKOERZU1VYUlQ1dVNaUTNNUm1takRueTlJMnIreHNVYXIvd0x5bE1LZURBPT0K",
+      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/566654496"
     }
   }
 }
