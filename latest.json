@@ -1,15 +1,15 @@
 {
-  "version": "0.1.9-beta.2026091601",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026091601\n\n### Fixed\n\n- **Persistent Companion Auth & Cookie Fallback**: Added dual-layer token persistence via both `localStorage` and a persistent 1-year `par_hub_token` cookie with automatic header decoration across all HTTP and SSE streaming calls (`/api/chat/stream`, `/api/chat/file`, routines, and knowledge sync). This eliminates unexpected re-prompting for PINs after initial pairing on mobile Safari and Chrome.\n- **Companion App Lock Bypass**: Disabled host-level desktop inactivity auto-lock on companion mobile browsers, ensuring paired phones and tablets stay continuously connected without being blocked by host desktop PIN prompts.\n- **Companion Onboarding Auto-Bypass**: Ensured paired companion devices automatically bypass desktop first-launch wizards and jump directly into the conversation view.\n- **Brand Logo & Mobile Polish**: Replaced placeholder icons with the official rounded P\u00e4r brand logo on the welcome and pairing screens, and added responsive layout scrolling with pinned action buttons.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026091601 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
-  "pub_date": "2026-09-15T22:41:20.619Z",
+  "version": "0.1.9-beta.2026091502",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026091502\n\n### Fixed\n\n- **Home Hub LAN Connectivity**: Configured desktop sidecar to bind `0.0.0.0:7433` so mobile devices on the local Wi-Fi network can reach the Home Hub. Non-loopback requests remain strictly guarded by `HomeHubAuthMiddleware`.\n- **Dynamic Bonjour Discovery**: Resolved `DNS_PROBE_FINISHED_NXDOMAIN` errors by automatically resolving the machine's actual system Bonjour hostname (`<LocalHostName>.local` on macOS) instead of a hardcoded static hostname.\n- **Direct IP & QR Code Prioritization**: Prominently displays the Direct IP address and on-screen pairing QR code as the primary pairing method for all companion devices, with an explicit advisory for Android/Chrome regarding `.local` mDNS limitations.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026091502 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
+  "pub_date": "2026-09-15T21:55:34.039Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGRoQk9lcmsvSEpwbTFmU3FQZjZjWVV2bzRwK1FCNHR0SEZLckNlWkFYY1AxT1hQaytla3FqQWJlOFB2Njl6KytXRHNxNkZBa3VZRFdySk5ORFRTaHdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTEyMDcxCWZpbGU6UMOkci5hcHAudGFyLmd6CkVIZVRmVndibXAyTHBLK094RjlyVFVWbzEvLytId0xxcTArbzE4OFcrK2FKOERZU1VYUlQ1dVNaUTNNUm1takRueTlJMnIreHNVYXIvd0x5bE1LZURBPT0K",
-      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/566654496"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGEyTWJvR2h6WFl6YmxVOG43K28rK1U5eU1JVG1OdUN4QzJXemdNNXRoV1MyZjFpV29TZHZEMjJ4QWptR3RRMTI0TGhxTGpxY2RlS3o5RjlJWWRzeXdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTA5MzI0CWZpbGU6UMOkci5hcHAudGFyLmd6CkFoNEhBWE9LdUt6eXg2eE5uT1RaRk5kTFZPYmhVMXQxVlBUdnJCSjBWNHAxMmZJYVZiVkdlYURFRHJkMFFodllVZW82MzZzM2NMYWwxenZSeGN0d0JnPT0K",
+      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/566587903"
     },
     "darwin-aarch64-app": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGRoQk9lcmsvSEpwbTFmU3FQZjZjWVV2bzRwK1FCNHR0SEZLckNlWkFYY1AxT1hQaytla3FqQWJlOFB2Njl6KytXRHNxNkZBa3VZRFdySk5ORFRTaHdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTEyMDcxCWZpbGU6UMOkci5hcHAudGFyLmd6CkVIZVRmVndibXAyTHBLK094RjlyVFVWbzEvLytId0xxcTArbzE4OFcrK2FKOERZU1VYUlQ1dVNaUTNNUm1takRueTlJMnIreHNVYXIvd0x5bE1LZURBPT0K",
-      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/566654496"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGEyTWJvR2h6WFl6YmxVOG43K28rK1U5eU1JVG1OdUN4QzJXemdNNXRoV1MyZjFpV29TZHZEMjJ4QWptR3RRMTI0TGhxTGpxY2RlS3o5RjlJWWRzeXdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTA5MzI0CWZpbGU6UMOkci5hcHAudGFyLmd6CkFoNEhBWE9LdUt6eXg2eE5uT1RaRk5kTFZPYmhVMXQxVlBUdnJCSjBWNHAxMmZJYVZiVkdlYURFRHJkMFFodllVZW82MzZzM2NMYWwxenZSeGN0d0JnPT0K",
+      "url": "https://api.github.com/repos/DatomerAB/Par/releases/assets/566587903"
     }
   }
 }
