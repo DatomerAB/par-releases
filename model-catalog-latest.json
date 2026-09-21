@@ -1,8 +1,8 @@
 {
-  "version": "20260919-191549",
-  "tag": "model-catalog-20260919-191549",
-  "url": "https://github.com/DatomerAB/par-releases/releases/download/model-catalog-20260919-191549/model-catalog-20260919-191549.zip",
-  "signature": "sha256:427ac589a713ed870acc2942ceb489275318cb0d0cf0103eed52708d2586930e",
-  "size": 16098,
-  "released_at": "2026-09-19T19:15:52Z"
+  "version": "20260921-092321",
+  "tag": "model-catalog-20260921-092321",
+  "url": "https://github.com/DatomerAB/par-releases/releases/download/model-catalog-20260921-092321/model-catalog-20260921-092321.zip",
+  "signature": "sha256:ac363a0002773b8a4edb1d894c50e32ce585e8d5e6f45ce9a1c04c2138e50982",
+  "size": 16580,
+  "released_at": "2026-09-21T09:23:25Z"
 }
