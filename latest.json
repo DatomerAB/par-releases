@@ -1,11 +1,11 @@
 {
-  "version": "0.1.9-beta.2026100701",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026100701\n\n### Added\n\n- Cross-platform local diagnostics with request correlation, module timings,\n  verbosity controls, and a sanitized support-log preview.\n\n### Fixed\n\n- Slow local-model service probes no longer block the API event loop, and the\n  Models page keeps the last successful GGUF catalog visible while refreshing.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026100701 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
-  "pub_date": "2026-10-07T11:15:08.851547Z",
+  "version": "0.1.9-beta.2026100702",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026100702\n\n### Fixed\n\n- Act routine saves now show the backend's specific failure message.\n- Chat response details identify the model that generated each answer, including\n  when streaming falls back to another model; completed progress stages can be\n  expanded and collapsed.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026100702 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
+  "pub_date": "2026-10-07T16:06:51.551414Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFhHc3YyTjJRTE4rc2RLVk5UUWRRcWNNazJsRkhsVUtOK0loNDVDRFZrN2lyYTRwSWZROGZ0Rm02T0wyTEhaYVdTVG9GVkpSSm5VbUlxck8yd3BzM3dNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzcxNjcxCWZpbGU6UMOkci5hcHAudGFyLmd6CmFDSmc1bHROMWRvczNSNTlOQ08yaUw2anhBaENhdjI2ZUp2enR6eVhjM0ZXOXluTEJKTnkyNUhkVUMxbEIySjhDa0dFOXpJekkxZ0t3eENzUlVzbURRPT0K",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026100701/Par.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGZjdTk5VTRSYk9rSG5HaHVLMlhBeENtVTZRVGZuUHQySjM5ZW9WVnBUTy9SZlJ3eGZDd21RTmVTaVRLa25wd2pzUXd1WnRyeU15aDZNemtTNndJc3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzg5MTY0CWZpbGU6UMOkci5hcHAudGFyLmd6Cnd5Um4xaFgzdmVpdy9sSXFyQzhReDBPMVJHdGw0MERZRVdLNlNleVBqU21FSjBmcUpLdW9zNm1DRldoUVdZQVp0R3JjbytmNmZhUS9IS0lSQzByNkN3PT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026100702/Par.app.tar.gz"
     }
   }
 }
