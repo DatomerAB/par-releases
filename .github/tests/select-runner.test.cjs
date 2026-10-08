@@ -83,6 +83,29 @@ test('Mac controller cannot select itself for Windows work', async () => {
   assert.match(result.output.reason, /token/);
 });
 
+test('unavailable Windows target keeps its polling selector on the existing Mac', async () => {
+  const result = await run({ CONTROLLER_KIND: 'self-hosted',
+    SELF_HOSTED_LABELS: '["self-hosted","Windows","X64","jcwindows"]',
+    GITHUB_HOSTED_LABEL: 'windows-2022' }, [{ runners: [runner()], total_count: 1 }]);
+  assert.deepEqual(JSON.parse(result.output.selector_runs_on), ['self-hosted', 'macOS', 'ARM64', 'par']);
+  assert.equal(result.output.scan_status, 'unavailable');
+  assert.match(result.output.reason, /initial check/);
+  assert.equal(result.calls, 1);
+});
+
+test('self-hosted polling can select a Windows target appearing later', async () => {
+  const windows = { status: 'online', busy: false,
+    labels: ['self-hosted', 'Windows', 'X64', 'jcwindows'].map(name => ({ name })) };
+  const result = await run({ PHASE: 'select', CONTROLLER_KIND: 'self-hosted',
+    SELF_HOSTED_LABELS: '["self-hosted","Windows","X64","jcwindows"]',
+    GITHUB_HOSTED_LABEL: 'windows-2022' }, [
+    { runners: [runner()], total_count: 1 }, { runners: [windows], total_count: 2 }
+  ]);
+  assert.equal(result.output.runner_kind, 'self-hosted');
+  assert.deepEqual(JSON.parse(result.output.runs_on), ['self-hosted', 'Windows', 'X64', 'jcwindows']);
+  assert.equal(result.elapsed, 10000);
+});
+
 test('fork guard overrides the self-hosted-controller fast path', async () => {
   const result = await run({ CONTROLLER_KIND: 'self-hosted', IS_FORK_PULL_REQUEST: 'true' });
   assert.equal(result.output.runner_kind, 'github-hosted');
