@@ -158,3 +158,11 @@ test('both jobs execute the same reviewed script', () => {
   assert.equal(workflow.jobs.bootstrap['timeout-minutes'], 2);
   assert.equal(workflow.jobs.select['timeout-minutes'], 35);
 });
+
+test('both jobs reject fork-origin workflow_run events as well as pull requests', () => {
+  for (const job of Object.values(workflow.jobs)) {
+    const trustGuard = job.steps[0].env.IS_FORK_PULL_REQUEST;
+    assert.match(trustGuard, /pull_request.head.repo.full_name/);
+    assert.match(trustGuard, /workflow_run.head_repository.full_name/);
+  }
+});

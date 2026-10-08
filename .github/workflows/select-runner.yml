@@ -64,7 +64,7 @@ jobs:
           GITHUB_HOSTED_LABEL: ${{ inputs.github_hosted_label }}
           WAIT_MINUTES: ${{ inputs.wait_minutes }}
           RUNNER_CHECK_TOKEN: ${{ secrets.runner_check_token }}
-          IS_FORK_PULL_REQUEST: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
+          IS_FORK_PULL_REQUEST: ${{ (github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository) || (github.event.workflow_run.head_repository.full_name != '' && github.event.workflow_run.head_repository.full_name != github.repository) }}
         with:
           github-token: ${{ secrets.runner_check_token || github.token }}
           retries: 0
@@ -96,7 +96,7 @@ jobs:
             const required = labels.map(label => label.toLowerCase());
             const reasons = {
               'github-hosted': 'GitHub-hosted explicitly selected',
-              'fork-pr': 'Untrusted fork pull requests require GitHub-hosted',
+              'fork-pr': 'Untrusted fork-origin events require GitHub-hosted',
               'missing-token': 'Runner-check token is not configured',
               'lookup-failed': 'Runner availability could not be verified',
               'unavailable': 'No matching runner became available before the deadline',
@@ -176,7 +176,7 @@ jobs:
           GITHUB_HOSTED_LABEL: ${{ inputs.github_hosted_label }}
           WAIT_MINUTES: ${{ inputs.wait_minutes }}
           RUNNER_CHECK_TOKEN: ${{ secrets.runner_check_token }}
-          IS_FORK_PULL_REQUEST: ${{ github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository }}
+          IS_FORK_PULL_REQUEST: ${{ (github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository) || (github.event.workflow_run.head_repository.full_name != '' && github.event.workflow_run.head_repository.full_name != github.repository) }}
           SCAN_STATUS: ${{ needs.bootstrap.outputs.scan_status }}
           DEADLINE: ${{ needs.bootstrap.outputs.deadline }}
           CONTROLLER_KIND: ${{ runner.environment }}

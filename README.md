@@ -39,8 +39,9 @@ A brief Ubuntu-hosted bootstrap checks availability. The selector then runs
 on a matching idle self-hosted runner, or on Ubuntu while polling. Hosted
 polling consumes hosted minutes; the availability budget includes bootstrap
 elapsed time. Self-hosted controllers must support the Node runtime used by
-the pinned `actions/github-script` action. Fork pull requests always use hosted
-runners, and no caller code is checked out by the selector.
+the pinned `actions/github-script` action. Fork-origin pull request and
+`workflow_run` events always use hosted runners, and no caller code is checked
+out by the selector.
 
 This checks availability before assignment, not queue-time failover. A runner
 can become unavailable between checking it and starting either the selector
