@@ -112,12 +112,17 @@ jobs:
             };
             const emit = (kind, status) => {
               const runsOn = JSON.stringify(kind === 'self-hosted' ? labels : hosted);
+              const pending = bootstrap && status === 'unavailable';
+              const reason = pending ? 'No matching target is idle at the initial check; availability polling follows' : reasons[status];
               core.setOutput('runs_on', runsOn);
               core.setOutput('runner_kind', kind);
-              core.setOutput('reason', reasons[status]);
-              core.notice(`${kind}: ${reasons[status]}`);
+              core.setOutput('reason', reason);
+              core.notice(`${pending ? 'selection-pending' : kind}: ${reason}`);
               if (bootstrap) {
-                core.setOutput('selector_runs_on', kind === 'self-hosted' ? runsOn : '"ubuntu-latest"');
+                const keepController = env.CONTROLLER_KIND === 'self-hosted' &&
+                  preference === 'self-hosted-preferred' && env.IS_FORK_PULL_REQUEST !== 'true';
+                core.setOutput('selector_runs_on', keepController ? env.CONTROLLER_LABELS :
+                  kind === 'self-hosted' ? runsOn : '"ubuntu-latest"');
                 core.setOutput('scan_status', status);
               }
             };

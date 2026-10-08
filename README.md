@@ -42,10 +42,14 @@ and `reason`.
 A self-hosted bootstrap handles trusted, self-hosted-preferred runs without
 requiring hosted billing. It can directly select its own matching labels,
 even without a runner-check token. Other targets use the runner API. The
-selector then runs on the eligible target or on Ubuntu while polling. Hosted
+selector stays on the accessible self-hosted controller while selecting or
+polling for the target. A Windows target is selected by its Windows labels,
+not the controller's Mac labels. The controller can be occupied for up to
+30 minutes while waiting for another platform. Hosted
 overrides and fork-origin events use Ubuntu for bootstrap too; these paths
 still require working hosted capacity and billing. Hosted polling consumes
-hosted minutes; its budget includes bootstrap execution time.
+hosted minutes when explicitly selected or required for an untrusted event;
+the availability budget includes bootstrap execution time.
 Self-hosted controllers must support the Node runtime used by
 the pinned `actions/github-script` action. Fork-origin pull request and
 `workflow_run` events always use hosted runners, and no caller code is checked
