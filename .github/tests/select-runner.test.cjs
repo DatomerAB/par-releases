@@ -24,6 +24,7 @@ async function run(overrides = {}, pages = [{ runners: [], total_count: 0 }], ap
     GITHUB_HOSTED_LABEL: 'ubuntu-latest', WAIT_MINUTES: '30',
     RUNNER_CHECK_TOKEN: 'test-token', IS_FORK_PULL_REQUEST: 'false',
     DEADLINE: '1800000', SCAN_STATUS: 'unavailable', CONTROLLER_KIND: 'github-hosted',
+    CONTROLLER_LABELS: '["self-hosted","macOS","ARM64","par"]',
     ...overrides
   };
   await execute({ setOutput: (key, value) => { output[key] = value; }, notice: () => {} },
@@ -58,6 +59,41 @@ test('selector does not wait for its own occupied runner', async () => {
   const result = await run({ PHASE: 'select', CONTROLLER_KIND: 'self-hosted', SCAN_STATUS: 'available' });
   assert.equal(result.output.runner_kind, 'self-hosted');
   assert.equal(result.calls, 0);
+});
+
+test('matching self-hosted bootstrap needs neither hosted capacity nor a lookup token', async () => {
+  const result = await run({ CONTROLLER_KIND: 'self-hosted', RUNNER_CHECK_TOKEN: '' });
+  assert.equal(result.output.runner_kind, 'self-hosted');
+  assert.equal(result.output.scan_status, 'available');
+  assert.equal(result.calls, 0);
+});
+
+test('self-hosted selection remains self-hosted without a lookup token', async () => {
+  const result = await run({ PHASE: 'select', CONTROLLER_KIND: 'self-hosted',
+    SCAN_STATUS: 'available', RUNNER_CHECK_TOKEN: '' });
+  assert.equal(result.output.runner_kind, 'self-hosted');
+  assert.equal(result.calls, 0);
+});
+
+test('Mac controller cannot select itself for Windows work', async () => {
+  const result = await run({ CONTROLLER_KIND: 'self-hosted', RUNNER_CHECK_TOKEN: '',
+    SELF_HOSTED_LABELS: '["self-hosted","Windows","X64","jcwindows"]',
+    GITHUB_HOSTED_LABEL: 'windows-2022' });
+  assert.equal(result.output.runner_kind, 'github-hosted');
+  assert.match(result.output.reason, /token/);
+});
+
+test('fork guard overrides the self-hosted-controller fast path', async () => {
+  const result = await run({ CONTROLLER_KIND: 'self-hosted', IS_FORK_PULL_REQUEST: 'true' });
+  assert.equal(result.output.runner_kind, 'github-hosted');
+  assert.equal(result.calls, 0);
+});
+
+test('trusted bootstrap is not unconditionally assigned a hosted runner', () => {
+  const bootstrapRunner = workflow.jobs.bootstrap['runs-on'];
+  assert.match(bootstrapRunner, /fromJSON\(inputs.controller_labels\)/);
+  assert.match(bootstrapRunner, /inputs.runner_preference == 'github-hosted'/);
+  assert.match(bootstrapRunner, /workflow_run.head_repository.full_name/);
 });
 
 test('hosted selector waits at most thirty minutes with virtual clock', async () => {
