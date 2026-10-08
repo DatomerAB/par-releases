@@ -15,6 +15,9 @@ on:
       wait_minutes:
         type: number
         default: 30
+      controller_labels:
+        type: string
+        default: '["self-hosted","macOS","ARM64","par"]'
     secrets:
       runner_check_token:
         required: false
@@ -41,13 +44,16 @@ on:
       wait_minutes:
         type: number
         default: 30
+      controller_labels:
+        type: string
+        default: '["self-hosted","macOS","ARM64","par"]'
 
 permissions:
   actions: read
 
 jobs:
   bootstrap:
-    runs-on: ubuntu-latest
+    runs-on: ${{ (inputs.runner_preference == 'github-hosted' || (github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository) || (github.event.workflow_run.head_repository.full_name != '' && github.event.workflow_run.head_repository.full_name != github.repository)) && 'ubuntu-latest' || fromJSON(inputs.controller_labels) }}
     timeout-minutes: 2
     outputs:
       selector_runs_on: ${{ steps.choose.outputs.selector_runs_on }}
@@ -63,6 +69,8 @@ jobs:
           SELF_HOSTED_LABELS: ${{ inputs.self_hosted_labels }}
           GITHUB_HOSTED_LABEL: ${{ inputs.github_hosted_label }}
           WAIT_MINUTES: ${{ inputs.wait_minutes }}
+          CONTROLLER_LABELS: ${{ inputs.controller_labels }}
+          CONTROLLER_KIND: ${{ runner.environment }}
           RUNNER_CHECK_TOKEN: ${{ secrets.runner_check_token }}
           IS_FORK_PULL_REQUEST: ${{ (github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository) || (github.event.workflow_run.head_repository.full_name != '' && github.event.workflow_run.head_repository.full_name != github.repository) }}
         with:
@@ -115,16 +123,27 @@ jobs:
             };
             if (bootstrap) core.setOutput('deadline', String(Date.now() + wait * 60000));
             let forced = preference === 'github-hosted' ? 'github-hosted' :
-              env.IS_FORK_PULL_REQUEST === 'true' ? 'fork-pr' :
-              !env.RUNNER_CHECK_TOKEN ? 'missing-token' : '';
+              env.IS_FORK_PULL_REQUEST === 'true' ? 'fork-pr' : '';
+            if (!forced && bootstrap && env.CONTROLLER_KIND === 'self-hosted') {
+              const controller = JSON.parse(env.CONTROLLER_LABELS);
+              if (!Array.isArray(controller) || controller.some(label => typeof label !== 'string') ||
+                  !controller.some(label => label.toLowerCase() === 'self-hosted')) {
+                throw new Error('Invalid controller_labels');
+              }
+              if (required.every(label => controller.some(item => item.toLowerCase() === label))) {
+                emit('self-hosted', 'available');
+                return;
+              }
+            }
+            if (!forced && !bootstrap && env.CONTROLLER_KIND === 'self-hosted' && env.SCAN_STATUS === 'available') {
+              emit('self-hosted', 'available');
+              return;
+            }
+            if (!forced && !env.RUNNER_CHECK_TOKEN) forced = 'missing-token';
             if (!bootstrap && ['github-hosted', 'fork-pr', 'missing-token', 'lookup-failed'].includes(env.SCAN_STATUS)) {
               forced = env.SCAN_STATUS;
             }
             if (forced) { emit('github-hosted', forced); return; }
-            if (!bootstrap && env.CONTROLLER_KIND === 'self-hosted' && env.SCAN_STATUS === 'available') {
-              emit('self-hosted', 'available');
-              return;
-            }
             const available = async () => {
               for (let page = 1; page <= 100; page++) {
                 const remaining = end - performance.now();

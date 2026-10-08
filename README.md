@@ -31,21 +31,31 @@ and `reason`.
 - `wait_minutes`: 0 to 30, default 30. Zero performs one availability check;
   choosing `github-hosted` bypasses the check and wait.
 - `runner_check_token`: an optional fine-grained token with repository
-  Administration: read for the calling repository. Without access, selection
-  falls back to hosted immediately with a reason. Organization runners must
-  also be assigned to runner groups accessible to that repository.
+  Administration: read for the calling repository. A matching self-hosted
+  controller needs no lookup token. Other targets require lookup access or
+  fall back to hosted with a reason. Organization runners must be assigned to
+  runner groups accessible to the calling repository.
+- `controller_labels`: bootstrap runner labels as JSON, default
+  `["self-hosted","macOS","ARM64","par"]`. The controller must be online
+  and accessible to every repository using these labels.
 
-A brief Ubuntu-hosted bootstrap checks availability. The selector then runs
-on a matching idle self-hosted runner, or on Ubuntu while polling. Hosted
-polling consumes hosted minutes; the availability budget includes bootstrap
-elapsed time. Self-hosted controllers must support the Node runtime used by
+A self-hosted bootstrap handles trusted, self-hosted-preferred runs without
+requiring hosted billing. It can directly select its own matching labels,
+even without a runner-check token. Other targets use the runner API. The
+selector then runs on the eligible target or on Ubuntu while polling. Hosted
+overrides and fork-origin events use Ubuntu for bootstrap too; these paths
+still require working hosted capacity and billing. Hosted polling consumes
+hosted minutes; its budget includes bootstrap execution time.
+Self-hosted controllers must support the Node runtime used by
 the pinned `actions/github-script` action. Fork-origin pull request and
 `workflow_run` events always use hosted runners, and no caller code is checked
 out by the selector.
 
 This checks availability before assignment, not queue-time failover. A runner
 can become unavailable between checking it and starting either the selector
-or the work job. GitHub cannot automatically relocate an assigned job. Runtime
+or the work job. An offline bootstrap controller cannot run fallback logic;
+its queue time is not bounded by `wait_minutes` or the job runtime timeout.
+GitHub cannot automatically relocate an assigned job. Runtime
 failures do not retry publishing, deployment, or email jobs on another runner.
 
 Run the mocked tests with Node and a Python interpreter containing PyYAML:
