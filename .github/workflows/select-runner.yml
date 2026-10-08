@@ -1,0 +1,186 @@
+name: Select runner
+
+on:
+  workflow_call:
+    inputs:
+      runner_preference:
+        type: string
+        default: self-hosted-preferred
+      self_hosted_labels:
+        type: string
+        required: true
+      github_hosted_label:
+        type: string
+        required: true
+      wait_minutes:
+        type: number
+        default: 30
+    secrets:
+      runner_check_token:
+        required: false
+        description: "Token with repository Administration: read for the calling repository"
+    outputs:
+      runs_on:
+        value: ${{ jobs.select.outputs.runs_on }}
+      runner_kind:
+        value: ${{ jobs.select.outputs.runner_kind }}
+      reason:
+        value: ${{ jobs.select.outputs.reason }}
+  workflow_dispatch:
+    inputs:
+      runner_preference:
+        type: choice
+        default: self-hosted-preferred
+        options: [self-hosted-preferred, github-hosted]
+      self_hosted_labels:
+        type: string
+        default: '["self-hosted","macOS","ARM64"]'
+      github_hosted_label:
+        type: string
+        default: ubuntu-latest
+      wait_minutes:
+        type: number
+        default: 30
+
+permissions:
+  actions: read
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      selector_runs_on: ${{ steps.choose.outputs.selector_runs_on }}
+      scan_status: ${{ steps.choose.outputs.scan_status }}
+      deadline: ${{ steps.choose.outputs.deadline }}
+    steps:
+      - name: Check selector runner availability
+        id: choose
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          PHASE: bootstrap
+          RUNNER_PREFERENCE: ${{ inputs.runner_preference }}
+          SELF_HOSTED_LABELS: ${{ inputs.self_hosted_labels }}
+          GITHUB_HOSTED_LABEL: ${{ inputs.github_hosted_label }}
+          WAIT_MINUTES: ${{ inputs.wait_minutes }}
+          RUNNER_CHECK_TOKEN: ${{ secrets.runner_check_token }}
+          IS_FORK_PULL_REQUEST: ${{ (github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository) || (github.event.workflow_run.head_repository.full_name != '' && github.event.workflow_run.head_repository.full_name != github.repository) }}
+        with:
+          github-token: ${{ secrets.runner_check_token || github.token }}
+          retries: 0
+          script: &selection-script |
+            const env = process.env;
+            const preference = env.RUNNER_PREFERENCE;
+            const labels = JSON.parse(env.SELF_HOSTED_LABELS);
+            const hosted = env.GITHUB_HOSTED_LABEL;
+            const wait = Number(env.WAIT_MINUTES);
+            if (!['self-hosted-preferred', 'github-hosted'].includes(preference)) {
+              throw new Error('Invalid runner_preference');
+            }
+            if (!Array.isArray(labels) || !labels.length ||
+                labels.some(label => typeof label !== 'string' || !label.trim()) ||
+                !labels.some(label => label.toLowerCase() === 'self-hosted')) {
+              throw new Error('self_hosted_labels must be a JSON label array containing self-hosted');
+            }
+            if (!/^(ubuntu|windows|macos)-(latest|\d+(\.\d+)?)(-(arm64|intel))?$/.test(hosted)) {
+              throw new Error('Invalid github_hosted_label');
+            }
+            if (!env.WAIT_MINUTES?.trim() || !Number.isFinite(wait) || wait < 0 || wait > 30) {
+              throw new Error('wait_minutes must be between 0 and 30');
+            }
+            const bootstrap = env.PHASE === 'bootstrap';
+            const duration = bootstrap ? 15000 : Math.max(0,
+              Math.min(wait * 60000, Number(env.DEADLINE) - Date.now()));
+            if (!Number.isFinite(duration)) throw new Error('Invalid availability deadline');
+            const end = performance.now() + duration;
+            const required = labels.map(label => label.toLowerCase());
+            const reasons = {
+              'github-hosted': 'GitHub-hosted explicitly selected',
+              'fork-pr': 'Untrusted fork-origin events require GitHub-hosted',
+              'missing-token': 'Runner-check token is not configured',
+              'lookup-failed': 'Runner availability could not be verified',
+              'unavailable': 'No matching runner became available before the deadline',
+              'available': 'Matching self-hosted runner is available'
+            };
+            const emit = (kind, status) => {
+              const runsOn = JSON.stringify(kind === 'self-hosted' ? labels : hosted);
+              core.setOutput('runs_on', runsOn);
+              core.setOutput('runner_kind', kind);
+              core.setOutput('reason', reasons[status]);
+              core.notice(`${kind}: ${reasons[status]}`);
+              if (bootstrap) {
+                core.setOutput('selector_runs_on', kind === 'self-hosted' ? runsOn : '"ubuntu-latest"');
+                core.setOutput('scan_status', status);
+              }
+            };
+            if (bootstrap) core.setOutput('deadline', String(Date.now() + wait * 60000));
+            let forced = preference === 'github-hosted' ? 'github-hosted' :
+              env.IS_FORK_PULL_REQUEST === 'true' ? 'fork-pr' :
+              !env.RUNNER_CHECK_TOKEN ? 'missing-token' : '';
+            if (!bootstrap && ['github-hosted', 'fork-pr', 'missing-token', 'lookup-failed'].includes(env.SCAN_STATUS)) {
+              forced = env.SCAN_STATUS;
+            }
+            if (forced) { emit('github-hosted', forced); return; }
+            if (!bootstrap && env.CONTROLLER_KIND === 'self-hosted' && env.SCAN_STATUS === 'available') {
+              emit('self-hosted', 'available');
+              return;
+            }
+            const available = async () => {
+              for (let page = 1; page <= 100; page++) {
+                const remaining = end - performance.now();
+                if (remaining <= 0) return false;
+                const response = await github.rest.actions.listSelfHostedRunnersForRepo({
+                  ...context.repo, per_page: 100, page,
+                  request: { timeout: Math.min(10000, remaining) }
+                });
+                const runners = response.data.runners;
+                if (!Array.isArray(runners)) throw new Error('Invalid runner response');
+                if (performance.now() >= end) return false;
+                if (runners.some(runner => runner.status === 'online' && runner.busy === false &&
+                    required.every(label => runner.labels.some(item => item.name.toLowerCase() === label)))) {
+                  return true;
+                }
+                if (page * 100 >= response.data.total_count) return false;
+              }
+              throw new Error('Runner pagination limit exceeded');
+            };
+            try {
+              while (bootstrap || performance.now() < end) {
+                if (await available()) { emit('self-hosted', 'available'); return; }
+                if (bootstrap) break;
+                const remaining = end - performance.now();
+                if (remaining <= 0) break;
+                await new Promise(resolve => setTimeout(resolve, Math.min(10000, remaining)));
+              }
+              emit('github-hosted', 'unavailable');
+            } catch {
+              emit('github-hosted', 'lookup-failed');
+            }
+
+  select:
+    needs: bootstrap
+    runs-on: ${{ fromJSON(needs.bootstrap.outputs.selector_runs_on) }}
+    timeout-minutes: 35
+    outputs:
+      runs_on: ${{ steps.choose.outputs.runs_on }}
+      runner_kind: ${{ steps.choose.outputs.runner_kind }}
+      reason: ${{ steps.choose.outputs.reason }}
+    steps:
+      - name: Select work runner
+        id: choose
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          PHASE: select
+          RUNNER_PREFERENCE: ${{ inputs.runner_preference }}
+          SELF_HOSTED_LABELS: ${{ inputs.self_hosted_labels }}
+          GITHUB_HOSTED_LABEL: ${{ inputs.github_hosted_label }}
+          WAIT_MINUTES: ${{ inputs.wait_minutes }}
+          RUNNER_CHECK_TOKEN: ${{ secrets.runner_check_token }}
+          IS_FORK_PULL_REQUEST: ${{ (github.event.pull_request.head.repo.full_name != '' && github.event.pull_request.head.repo.full_name != github.repository) || (github.event.workflow_run.head_repository.full_name != '' && github.event.workflow_run.head_repository.full_name != github.repository) }}
+          SCAN_STATUS: ${{ needs.bootstrap.outputs.scan_status }}
+          DEADLINE: ${{ needs.bootstrap.outputs.deadline }}
+          CONTROLLER_KIND: ${{ runner.environment }}
+        with:
+          github-token: ${{ secrets.runner_check_token || github.token }}
+          retries: 0
+          script: *selection-script
