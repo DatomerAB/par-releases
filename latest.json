@@ -1,11 +1,11 @@
 {
-  "version": "0.1.9-beta.2026100702",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026100702\n\n### Fixed\n\n- Act routine saves now show the backend's specific failure message.\n- Chat response details identify the model that generated each answer, including\n  when streaming falls back to another model; completed progress stages can be\n  expanded and collapsed.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026100702 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
-  "pub_date": "2026-10-07T16:06:51.551414Z",
+  "version": "0.1.9-beta.2026100801",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026100801\n\n### Fixed\n\n- Act routine execution and scheduling now behave consistently across platforms, and approval-required routines cannot be scheduled.\n- Models, routines, and integrations retain cached data during refresh; license state updates without flicker.\n- Chat generation remains visible across navigation, while cold model loads are serialized and avoid speculative warm-up.\n\n### Added\n\n- Bounded, content-free diagnostics for Act operations and Chat model-load and response timings.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026100801 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
+  "pub_date": "2026-10-08T11:12:46.306539Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGZjdTk5VTRSYk9rSG5HaHVLMlhBeENtVTZRVGZuUHQySjM5ZW9WVnBUTy9SZlJ3eGZDd21RTmVTaVRLa25wd2pzUXd1WnRyeU15aDZNemtTNndJc3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzg5MTY0CWZpbGU6UMOkci5hcHAudGFyLmd6Cnd5Um4xaFgzdmVpdy9sSXFyQzhReDBPMVJHdGw0MERZRVdLNlNleVBqU21FSjBmcUpLdW9zNm1DRldoUVdZQVp0R3JjbytmNmZhUS9IS0lSQzByNkN3PT0K",
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026100702/Par.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGVtWDB4VFBvaDhVb3p3RFJ6YXlSMFBuZ0NsQStIZWRVcnlDMitOM2RrLytCcWJ3Z3BVNFJiQU5MTzQ0L2dpRlFZRGdMZ0t1bWQ1VkViVDc5NW9oaUFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNDU3OTM0CWZpbGU6UMOkci5hcHAudGFyLmd6CnRCVzJzVHhha0ZsU0VVWXFaazJwMVlIZHlJdUFYOTg5VTVxNkhTVkFqdkhJNDF4SHdNQ1gvMlhxaGc5L0dYcTVRdGJKRU5ENTRNeG9Rc2VxeWN6cEF3PT0K",
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026100801/Par.app.tar.gz"
     }
   }
 }
