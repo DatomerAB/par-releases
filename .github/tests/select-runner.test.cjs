@@ -253,6 +253,12 @@ test('both jobs execute the same reviewed script', () => {
   assert.equal(workflow.jobs.select['timeout-minutes'], 35);
 });
 
+test('self-hosted-only keeps downstream jobs on the requested labels', () => {
+  const outputs = workflow.true.workflow_call.outputs;
+  assert.match(outputs.runs_on.value, /inputs\.self_hosted_only && inputs\.self_hosted_labels/);
+  assert.match(outputs.runner_kind.value, /inputs\.self_hosted_only && 'self-hosted'/);
+});
+
 test('both jobs reject fork-origin workflow_run events as well as pull requests', () => {
   for (const job of Object.values(workflow.jobs)) {
     const trustGuard = job.steps[0].env.IS_FORK_PULL_REQUEST;
