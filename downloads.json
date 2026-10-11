@@ -1,0 +1,26 @@
+{
+  "platforms": {
+    "linux-x64-cpu": [
+      {
+        "name": "Par_0.1.0-beta.2026081301_amd64.AppImage",
+        "tag": "v0.1.0-beta.2026081301",
+        "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.0-beta.2026081301/Par_0.1.0-beta.2026081301_amd64.AppImage"
+      }
+    ],
+    "macos-arm64": [
+      {
+        "name": "Par_0.1.9-beta.2026101102_aarch64.dmg",
+        "sha256": "bb1d645a82528ad3d7ef3c646a1567bd0640117dc19f3ee53e803a97db74af90",
+        "tag": "v0.1.9-beta.2026101102",
+        "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101102/Par_0.1.9-beta.2026101102_aarch64.dmg"
+      },
+      {
+        "name": "Par_0.1.9-beta.2026100804_aarch64.dmg",
+        "tag": "v0.1.9-beta.2026100804",
+        "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026100804/Par_0.1.9-beta.2026100804_aarch64.dmg"
+      }
+    ]
+  },
+  "revision": "f786e253ca2803bf98f285aa401a09dc2d7baf3b364bf0dae7fee7f2d3149d26",
+  "schema_version": 1
+}
