@@ -1,11 +1,11 @@
 {
-  "version": "0.1.9-beta.2026101102",
-  "pub_date": "2026-10-11T14:26:23.517111Z",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026101102\n\n### Added\n\n- Reusable workflows can now be organized into local folders, reviewed before\n  execution, and configured with approval steps and schedules.\n- Workflow results can be exported as Markdown, Word, Excel, or PDF documents\n  and are stored with encryption.\n- Windows x64 CPU beta installers are released alongside macOS Apple Silicon\n  builds, with platform packages published independently.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026101102 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
+  "version": "0.1.9-beta.2026101103",
+  "pub_date": "2026-10-11T16:49:39.062973Z",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026101103\n\n### Added\n\n- Local financial workflows accept HTML templates and fillable PDF text-field\n  templates, with verified-source variable bindings and document previews.\n- HTML export retains the template structure; PDF export supports print-oriented\n  HTML/CSS or preserves uploaded PDF form pages with legible field fitting.\n- Missing bindings, unsafe resources, active content and PDF field overflow are\n  rejected before plan lock. Static PDFs without named fields are not supported.\n\n### Fixed\n\n- Financial totals and approval summaries use only the locked source scope.\n- Concurrent workflow checkpoint and vault operations no longer contend during\n  integrity-stamp flushing.\n- Workflow forms stack on mobile, and input pickers include PDF statements.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026101103 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
   "platforms": {
     "darwin-aarch64": {
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101102/Par.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFlRWmFOejduTWg0eGRyK3dxR2xSRnd0dWd0Ty9DZVhnQ2NyQzdsVjJWUXBZWU5JLzdoYTdiWXk5N3lOVTlvOEU4UTZUeUdVQjRzdURLNUhRYnZsOFFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNzI3NzA0CWZpbGU6UMOkci5hcHAudGFyLmd6Cm02K0ZPaE9uQSs0b1lEd29ScysrTlhYZWhReFlBSno2V1ZROVJaZzQxbEVtL3BRV3g3c3VBNnhTVDRoaHkrV00xTGNXZVhLYkpjWk8yTHUyeEVQa0RnPT0K"
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101103/Par.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGY2M0JsNm8zZitEelJZTFlHMVQ4QVF0VUY5cDY2TnQ5VVk2WjNoU0NaZVlMcFl6VUJwVzlWa0hmaFRMUnZHaG9wRCswOTlxTUdtSmptbnljVmRNTUFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNzM2NDQ0CWZpbGU6UMOkci5hcHAudGFyLmd6CmkycGlUeVdXMzdyR2xkelJwYmtxMHFjRThEdVJjZXNwZG1lOE5FSE83bitLTVRtOXF6MGVNZFlVaWx4WVQydElVeWxhcWowQW5LWUF5YUpEdkMyM0RBPT0K"
     }
   }
 }
