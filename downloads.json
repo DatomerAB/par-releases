@@ -20,8 +20,16 @@
         "tag": "v0.1.9-beta.2026101102",
         "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101102/Par_0.1.9-beta.2026101102_aarch64.dmg"
       }
+    ],
+    "windows-x64-cpu": [
+      {
+        "name": "Par_0.1.9-beta.2026101103_x64-setup-cpu.exe",
+        "sha256": "0400382438dfb1c5211ce1cba59f45a7d700684d38dcfc0472c9b20c2d3bb2b6",
+        "tag": "v0.1.9-beta.2026101103",
+        "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101103/Par_0.1.9-beta.2026101103_x64-setup-cpu.exe"
+      }
     ]
   },
-  "revision": "2ab2058c3dcb2134065c18f1c2b0e180a6077294fb747a4ef5d5603697034dae",
+  "revision": "000be7dade3250496f6d8f0b2552918eb15178bcf47dd00838faa2b083cb4d19",
   "schema_version": 1
 }
