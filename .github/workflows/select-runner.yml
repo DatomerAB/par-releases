@@ -15,18 +15,21 @@ on:
       wait_minutes:
         type: number
         default: 30
+      self_hosted_only:
+        type: boolean
+        default: false
       controller_labels:
         type: string
         default: '["self-hosted","macOS","ARM64","par"]'
     secrets:
       runner_check_token:
         required: false
-        description: "Token with repository Administration: read for the calling repository"
+        description: "Token with runner-read access to the calling repository and its organization"
     outputs:
       runs_on:
-        value: ${{ jobs.select.outputs.runs_on }}
+        value: ${{ inputs.self_hosted_only && inputs.self_hosted_labels || jobs.select.outputs.runs_on }}
       runner_kind:
-        value: ${{ jobs.select.outputs.runner_kind }}
+        value: ${{ inputs.self_hosted_only && 'self-hosted' || jobs.select.outputs.runner_kind }}
       reason:
         value: ${{ jobs.select.outputs.reason }}
   workflow_dispatch:
@@ -44,6 +47,10 @@ on:
       wait_minutes:
         type: number
         default: 30
+      self_hosted_only:
+        description: Keep downstream jobs on the target self-hosted labels
+        type: boolean
+        default: false
       controller_labels:
         type: string
         default: '["self-hosted","macOS","ARM64","par"]'
@@ -149,12 +156,12 @@ jobs:
               forced = env.SCAN_STATUS;
             }
             if (forced) { emit('github-hosted', forced); return; }
-            const available = async () => {
+            const scan = async (listRunners, parameters) => {
               for (let page = 1; page <= 100; page++) {
                 const remaining = end - performance.now();
                 if (remaining <= 0) return false;
-                const response = await github.rest.actions.listSelfHostedRunnersForRepo({
-                  ...context.repo, per_page: 100, page,
+                const response = await listRunners({
+                  ...parameters, per_page: 100, page,
                   request: { timeout: Math.min(10000, remaining) }
                 });
                 const runners = response.data.runners;
@@ -167,6 +174,13 @@ jobs:
                 if (page * 100 >= response.data.total_count) return false;
               }
               throw new Error('Runner pagination limit exceeded');
+            };
+            const available = async () => {
+              const repositoryAvailable = await scan(
+                request => github.rest.actions.listSelfHostedRunnersForRepo(request), context.repo);
+              if (repositoryAvailable) return true;
+              return scan(request => github.rest.actions.listSelfHostedRunnersForOrg(request),
+                { org: context.repo.owner });
             };
             try {
               while (bootstrap || performance.now() < end) {
