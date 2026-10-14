@@ -61,6 +61,12 @@
     ],
     "windows-x64-cpu": [
       {
+        "name": "Par_0.1.9-beta.2026101201_x64-setup-cpu.exe",
+        "sha256": "25763c4ed643a01a62dbfa50bfafce6bb8ac4086166655e5323a229bc91bae8e",
+        "tag": "v0.1.9-beta.2026101201",
+        "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101201/Par_0.1.9-beta.2026101201_x64-setup-cpu.exe"
+      },
+      {
         "name": "Par_0.1.9-beta.2026101103_x64-setup-cpu.exe",
         "sha256": "0400382438dfb1c5211ce1cba59f45a7d700684d38dcfc0472c9b20c2d3bb2b6",
         "tag": "v0.1.9-beta.2026101103",
@@ -68,6 +74,6 @@
       }
     ]
   },
-  "revision": "92ec8107fbcd8e61f71806cb144c47e9283db625b4fb72d6517f5c849a519954",
+  "revision": "26aca6ed90e85355d1979c20741998b7470bc07591a97a1db902a9a090d95ab7",
   "schema_version": 1
 }
