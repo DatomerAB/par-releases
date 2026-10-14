@@ -1,4 +1,42 @@
 {
+  "platform_metadata": {
+    "linux-x64-cpu": {
+      "order": 3,
+      "os": {
+        "en": "Linux",
+        "sv": "Linux"
+      },
+      "variant": {
+        "en": "CPU",
+        "sv": "CPU"
+      },
+      "variant_order": 1
+    },
+    "macos-arm64": {
+      "order": 1,
+      "os": {
+        "en": "Mac",
+        "sv": "Mac"
+      },
+      "variant": {
+        "en": "Apple Silicon",
+        "sv": "Apple Silicon"
+      },
+      "variant_order": 1
+    },
+    "windows-x64-cpu": {
+      "order": 2,
+      "os": {
+        "en": "Windows",
+        "sv": "Windows"
+      },
+      "variant": {
+        "en": "CPU",
+        "sv": "CPU"
+      },
+      "variant_order": 1
+    }
+  },
   "platforms": {
     "linux-x64-cpu": [
       {
@@ -9,16 +47,16 @@
     ],
     "macos-arm64": [
       {
+        "name": "Par_0.1.9-beta.2026101201_aarch64.dmg",
+        "sha256": "d107a8959c643eea6d2c60e20d030f9d1c545eb918e05c50896c34a723d34dda",
+        "tag": "v0.1.9-beta.2026101201",
+        "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101201/Par_0.1.9-beta.2026101201_aarch64.dmg"
+      },
+      {
         "name": "Par_0.1.9-beta.2026101103_aarch64.dmg",
         "sha256": "084d9061d5b3869b2ba4e34a975ba4a226e90132d44561aa56e385c8507c3227",
         "tag": "v0.1.9-beta.2026101103",
         "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101103/Par_0.1.9-beta.2026101103_aarch64.dmg"
-      },
-      {
-        "name": "Par_0.1.9-beta.2026101102_aarch64.dmg",
-        "sha256": "bb1d645a82528ad3d7ef3c646a1567bd0640117dc19f3ee53e803a97db74af90",
-        "tag": "v0.1.9-beta.2026101102",
-        "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101102/Par_0.1.9-beta.2026101102_aarch64.dmg"
       }
     ],
     "windows-x64-cpu": [
@@ -30,6 +68,6 @@
       }
     ]
   },
-  "revision": "000be7dade3250496f6d8f0b2552918eb15178bcf47dd00838faa2b083cb4d19",
+  "revision": "92ec8107fbcd8e61f71806cb144c47e9283db625b4fb72d6517f5c849a519954",
   "schema_version": 1
 }

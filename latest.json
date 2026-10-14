@@ -1,15 +1,11 @@
 {
-  "version": "0.1.9-beta.2026101103",
-  "pub_date": "2026-10-11T16:49:39.062973Z",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026101103\n\n### Added\n\n- Local financial workflows accept HTML templates and fillable PDF text-field\n  templates, with verified-source variable bindings and document previews.\n- HTML export retains the template structure; PDF export supports print-oriented\n  HTML/CSS or preserves uploaded PDF form pages with legible field fitting.\n- Missing bindings, unsafe resources, active content and PDF field overflow are\n  rejected before plan lock. Static PDFs without named fields are not supported.\n\n### Fixed\n\n- Financial totals and approval summaries use only the locked source scope.\n- Concurrent workflow checkpoint and vault operations no longer contend during\n  integrity-stamp flushing.\n- Workflow forms stack on mobile, and input pickers include PDF statements.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026101103 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
+  "version": "0.1.9-beta.2026101201",
+  "pub_date": "2026-10-14T09:10:52.502218Z",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026101201\n\n### Added\n\n- Financial Statement and Document Analysis are reusable workflow starters.\n  Members can copy, rename, and customize their own encrypted templates without\n  storing source documents in the template.\n- Document Analysis uses the checkpointed multi-agent review flow for local\n  documents, with source citations, a bounded text context, and reviewed local\n  artifact output.\n- Optional workflow web research uses a separate public query and bounded,\n  untrusted snippets; selected document contents are not sent as the query.\n- The feature tour now covers reusable workflows and optional public research.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026101201 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
   "platforms": {
     "darwin-aarch64": {
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101103/Par.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGY2M0JsNm8zZitEelJZTFlHMVQ4QVF0VUY5cDY2TnQ5VVk2WjNoU0NaZVlMcFl6VUJwVzlWa0hmaFRMUnZHaG9wRCswOTlxTUdtSmptbnljVmRNTUFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNzM2NDQ0CWZpbGU6UMOkci5hcHAudGFyLmd6CmkycGlUeVdXMzdyR2xkelJwYmtxMHFjRThEdVJjZXNwZG1lOE5FSE83bitLTVRtOXF6MGVNZFlVaWx4WVQydElVeWxhcWowQW5LWUF5YUpEdkMyM0RBPT0K"
-    },
-    "windows-x86_64": {
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101103/Par_0.1.9-beta.2026101103_x64-setup-cpu.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGJCeEY5bi9qV20xbWZyTVlzcjZIdmhyTis2anE2aDI4QTA2TzNDT2YycDRxalFsTHNzc2ZkWDRPdnhKNWExZi80Z05YN2wwWEZpZlNWbW82QkRDcmdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNzM3MDA3CWZpbGU6UMOkcl8wLjEuOS1iZXRhLjIwMjYxMDExMDNfeDY0LXNldHVwLmV4ZQpFbGd1ekNZQmlxV3MzVXo5UTc0YnJveDE5aTUveTNQbXlrZ0l3aWpLd3laa1F5UUVrTEMvWERxSlZ2UXVVeENHU1psRklOVmlQeG9RZUQvL3BSV1JDUT09Cg=="
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101201/Par.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGZ1a2V1RXpML2tFVS9GZHVhbVZnLzhjYTM2WVVORGwvb0M1QVJPYnErbTBveDJRMnQraE1TTTlHUWNsLysvL1VjSEwvVzBzYTRyUVZPeXhJMlA4M1EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxODc2MjQ5CWZpbGU6UMOkci5hcHAudGFyLmd6Ck5xdjNBdXFXVkR5cEhFU04wd25oNmE2U3F1WHZBRjJuZEdBSHRoamxucDFPRUpDaUswMFhmODhtN1hjdHVGRmE5TFdEbEY4WnhJZ1RnME5xTTJ5dUNBPT0K"
     }
   }
 }
