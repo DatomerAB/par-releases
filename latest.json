@@ -6,6 +6,10 @@
     "darwin-aarch64": {
       "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101602/Par.app.tar.gz",
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFdNTlY0UWNvT240TytORjNPQU1CU3cyb3JWSkxmVzJBSWNpL1NXVlQwb3Ura3JOcm1Tb1dYT2Frdi8xZVBJK25TSlFGdFc1cXNsM2RsVE5sbHFiZHdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTUzMDExCWZpbGU6UMOkci5hcHAudGFyLmd6Ck82Rys3KzlXZVJJQUJrS0w3SnhZQ2VYV1BLYi9LeTJXQlZWWmN1YmM3MTR5WEs5WWREYzROMjBEWHAydXNFRmNSM2N1eU16SXBCVWxsWUVjZjRTV0FRPT0K"
+    },
+    "windows-x86_64": {
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101602/Par_0.1.9-beta.2026101602_x64-setup-cpu.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFM1Rjh3b0hHM1hFNmNydld5TmtKWE1XcVZJMzFHNlU3QnZicnRHaDB3ZklnbEpNS0NRRGF6RHdqZmJoNTVRZncvSWt2Y1ZNZXgzTnBKY2VnTHNsZndNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTUyNjUxCWZpbGU6UMOkcl8wLjEuOS1iZXRhLjIwMjYxMDE2MDJfeDY0LXNldHVwLmV4ZQptSmUvQXFPaDgrOG9idzF0MFRQOURLUFNkeFBkN2NPak9EZ3MxYU1NM1Bnb2l3TDdKVVZKMnN0bVo5d1RRYVBzSGtMdlExMmI0dFoxT2YzODFNVG1Cdz09Cg=="
     }
   }
 }
