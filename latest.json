@@ -1,15 +1,11 @@
 {
-  "version": "0.1.9-beta.2026101201",
-  "pub_date": "2026-10-14T09:10:52.502218Z",
-  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026101201\n\n### Added\n\n- Financial Statement and Document Analysis are reusable workflow starters.\n  Members can copy, rename, and customize their own encrypted templates without\n  storing source documents in the template.\n- Document Analysis uses the checkpointed multi-agent review flow for local\n  documents, with source citations, a bounded text context, and reviewed local\n  artifact output.\n- Optional workflow web research uses a separate public query and bounded,\n  untrusted snippets; selected document contents are not sent as the query.\n- The feature tour now covers reusable workflows and optional public research.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026101201 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
+  "version": "0.1.9-beta.2026101602",
+  "pub_date": "2026-10-16T14:30:18.445718Z",
+  "notes": "## What\u2019s new in P\u00e4r v0.1.9-beta.2026101602\n\n### Fixed\n\n- Declare `python-bidi` directly so clean macOS and Windows sidecar build\n  environments include the distribution metadata required by PyInstaller.\n\n## Download & Getting Started\n- [Download P\u00e4r v0.1.9-beta.2026101602 for macOS](https://datomer.eu/#download)\n- [Beta Download & Setup Guide](https://datomer.eu/get-started)",
   "platforms": {
     "darwin-aarch64": {
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101201/Par.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaGZ1a2V1RXpML2tFVS9GZHVhbVZnLzhjYTM2WVVORGwvb0M1QVJPYnErbTBveDJRMnQraE1TTTlHUWNsLysvL1VjSEwvVzBzYTRyUVZPeXhJMlA4M1EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxODc2MjQ5CWZpbGU6UMOkci5hcHAudGFyLmd6Ck5xdjNBdXFXVkR5cEhFU04wd25oNmE2U3F1WHZBRjJuZEdBSHRoamxucDFPRUpDaUswMFhmODhtN1hjdHVGRmE5TFdEbEY4WnhJZ1RnME5xTTJ5dUNBPT0K"
-    },
-    "windows-x86_64": {
-      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101201/Par_0.1.9-beta.2026101201_x64-setup-cpu.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFhRYTBHRkFLbE9OMjhsaUdaZTJUa0dyMHNLcnplQjFsNElteHZQZE42KzlZVmMwaFI5K2QyS29zR3Z6aVhnU1pNTGI1QldTZHhuWVhOTythZVdRb0FNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxODc2OTcyCWZpbGU6UMOkcl8wLjEuOS1iZXRhLjIwMjYxMDEyMDFfeDY0LXNldHVwLmV4ZQptS2I4ang0U3kxaUx4VVBFVllGMXRLWXpZekZyZXllSk10Y3VnS2FGcDAvM25YWkZOR0lRWmc2RWViOUkyS0hYb01RdUdNMTFyTXFueGlBcG5WR25BZz09Cg=="
+      "url": "https://github.com/DatomerAB/par-releases/releases/download/v0.1.9-beta.2026101602/Par.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTc210ZllxUUhhaFdNTlY0UWNvT240TytORjNPQU1CU3cyb3JWSkxmVzJBSWNpL1NXVlQwb3Ura3JOcm1Tb1dYT2Frdi8xZVBJK25TSlFGdFc1cXNsM2RsVE5sbHFiZHdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyMTUzMDExCWZpbGU6UMOkci5hcHAudGFyLmd6Ck82Rys3KzlXZVJJQUJrS0w3SnhZQ2VYV1BLYi9LeTJXQlZWWmN1YmM3MTR5WEs5WWREYzROMjBEWHAydXNFRmNSM2N1eU16SXBCVWxsWUVjZjRTV0FRPT0K"
     }
   }
 }
