@@ -14,9 +14,11 @@ const execute = new AsyncFunction('core', 'github', 'context', 'process', 'Date'
 const runner = (busy = false) => ({ status: 'online', busy,
   labels: ['self-hosted', 'macOS', 'ARM64'].map(name => ({ name })) });
 
-async function run(overrides = {}, pages = [{ runners: [], total_count: 0 }], apiDelay = 0, started = 0) {
+async function run(overrides = {}, pages = [{ runners: [], total_count: 0 }], apiDelay = 0, started = 0,
+  orgPages = [{ runners: [], total_count: 0 }]) {
   let elapsed = started;
   let calls = 0;
+  let orgCalls = 0;
   const output = {};
   const env = {
     PHASE: 'bootstrap', RUNNER_PREFERENCE: 'self-hosted-preferred',
@@ -28,17 +30,28 @@ async function run(overrides = {}, pages = [{ runners: [], total_count: 0 }], ap
     ...overrides
   };
   await execute({ setOutput: (key, value) => { output[key] = value; }, notice: () => {} },
-    { rest: { actions: { listSelfHostedRunnersForRepo: async request => {
-      assert.ok(request.request.timeout > 0 && request.request.timeout <= 10000);
-      const page = pages[Math.min(calls++, pages.length - 1)];
-      elapsed += Math.min(apiDelay, request.request.timeout);
-      if (apiDelay > request.request.timeout) throw new Error('Request timed out');
-      if (page instanceof Error) throw page;
-      return { data: page };
-    } } } }, { repo: { owner: 'DatomerAB', repo: 'caller' } }, { env },
+    { rest: { actions: {
+      listSelfHostedRunnersForRepo: async request => {
+        assert.ok(request.request.timeout > 0 && request.request.timeout <= 10000);
+        const page = pages[Math.min(calls++, pages.length - 1)];
+        elapsed += Math.min(apiDelay, request.request.timeout);
+        if (apiDelay > request.request.timeout) throw new Error('Request timed out');
+        if (page instanceof Error) throw page;
+        return { data: page };
+      },
+      listSelfHostedRunnersForOrg: async request => {
+        assert.equal(request.org, 'DatomerAB');
+        assert.ok(request.request.timeout > 0 && request.request.timeout <= 10000);
+        const page = orgPages[Math.min(orgCalls++, orgPages.length - 1)];
+        elapsed += Math.min(apiDelay, request.request.timeout);
+        if (apiDelay > request.request.timeout) throw new Error('Request timed out');
+        if (page instanceof Error) throw page;
+        return { data: page };
+      }
+    } } }, { repo: { owner: 'DatomerAB', repo: 'caller' } }, { env },
     { now: () => elapsed }, { now: () => elapsed },
     (callback, delay) => { elapsed += delay; callback(); });
-  return { output, elapsed, calls };
+  return { output, elapsed, calls, orgCalls };
 }
 
 test('bootstrap chooses idle self-hosted selector with case-insensitive labels', async () => {
@@ -46,6 +59,20 @@ test('bootstrap chooses idle self-hosted selector with case-insensitive labels',
   assert.deepEqual(JSON.parse(result.output.selector_runs_on), ['self-hosted', 'macOS', 'ARM64']);
   assert.equal(result.output.scan_status, 'available');
   assert.equal(result.calls, 1);
+  assert.equal(result.orgCalls, 0);
+});
+
+test('bootstrap finds an idle organization runner when no repository runner matches', async () => {
+  const windows = { status: 'online', busy: false,
+    labels: ['self-hosted', 'Windows', 'X64', 'jcwindows'].map(name => ({ name })) };
+  const result = await run({ SELF_HOSTED_LABELS: '["self-hosted","Windows","X64","jcwindows"]',
+    GITHUB_HOSTED_LABEL: 'windows-2022' }, undefined, 0, 0,
+  [{ runners: [windows], total_count: 1 }]);
+  assert.equal(result.output.scan_status, 'available');
+  assert.equal(result.output.runner_kind, 'self-hosted');
+  assert.deepEqual(JSON.parse(result.output.runs_on), ['self-hosted', 'Windows', 'X64', 'jcwindows']);
+  assert.equal(result.calls, 1);
+  assert.equal(result.orgCalls, 1);
 });
 
 test('bootstrap is brief when runner is busy', async () => {
@@ -163,6 +190,14 @@ test('API denial uses explicit fallback without polling', async () => {
   assert.equal(result.elapsed, 0);
 });
 
+test('organization runner API denial uses explicit hosted fallback', async () => {
+  const result = await run({}, undefined, 0, 0, [new Error('403')]);
+  assert.equal(result.output.runner_kind, 'github-hosted');
+  assert.match(result.output.reason, /verified/);
+  assert.equal(result.calls, 1);
+  assert.equal(result.orgCalls, 1);
+});
+
 test('finds eligible runner on second page', async () => {
   const result = await run({}, [
     { runners: [], total_count: 101 }, { runners: [runner()], total_count: 101 }
@@ -216,6 +251,12 @@ test('both jobs execute the same reviewed script', () => {
   assert.equal(workflow.jobs.select.steps[0].with.script, script);
   assert.equal(workflow.jobs.bootstrap['timeout-minutes'], 2);
   assert.equal(workflow.jobs.select['timeout-minutes'], 35);
+});
+
+test('self-hosted-only keeps downstream jobs on the requested labels', () => {
+  const outputs = workflow.true.workflow_call.outputs;
+  assert.match(outputs.runs_on.value, /inputs\.self_hosted_only && inputs\.self_hosted_labels/);
+  assert.match(outputs.runner_kind.value, /inputs\.self_hosted_only && 'self-hosted'/);
 });
 
 test('both jobs reject fork-origin workflow_run events as well as pull requests', () => {
